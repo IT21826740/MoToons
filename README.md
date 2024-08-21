@@ -1,94 +1,121 @@
 
 
-```markdown
-# MoToons
+# MoToons 3D Image Slider Banner
 
-MoToons is a kids' cartoon channel website focused on fairy tales. The site features an interactive, animated 3D carousel of images and an elegant header section with a large title and model image. This project is a static website built with HTML and CSS.
-
-## Table of Contents
-
-- [Demo](#demo)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Technologies](#technologies)
-- [License](#license)
+This project demonstrates how to create a 3D image slider effect using CSS. The banner section is part of the MoToons website, a kids' cartoon channel primarily focused on fairy tales. The 3D image slider gives a dynamic and interactive experience by rotating images in a circular carousel.
 
 ## Demo
 
-You can see a live demo of the website.
 
-https://github.com/user-attachments/assets/24b1dd0a-dd7a-4d41-a9f4-f1380c9a168a
+https://github.com/user-attachments/assets/87bc3bf6-fbb9-41f1-af77-0e598f3d4249
 
 
-## Features
 
-- **3D Image Carousel:** A rotating carousel of images with a 3D effect, showcasing various fairy tale images.
-- **Responsive Design:** The layout is responsive, ensuring the site looks good on various devices.
-- **Custom Fonts:** Uses the 'ICA Rubrik' and 'Poppins' fonts for a unique and stylish appearance.
-- **Smooth Animations:** Includes smooth animations and transitions for an engaging user experience.
-- **Custom Banner Content:** The banner features a large, centered title with a stroked text effect and a background image model.
+## Overview
+
+This project is designed to create a visually appealing 3D image slider effect using only HTML and CSS. The slider rotates a set of images in a 3D circular pattern, giving the impression of depth and perspective. This effect is perfect for enhancing the user experience on websites, especially in banner sections.
+
+## Technologies Used
+
+- **HTML5**: For structuring the webpage.
+- **CSS3**: For styling the webpage and creating the 3D effects.
+- **Web Fonts**: For custom typography.
 
 ## Installation
 
-To run this project locally, follow these steps:
-
-1. **Clone the repository:**
+1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/IT21826740/motoons.git
+   git clone https://github.com/IT21826740/MoToons.git
    ```
 
-2. **Navigate to the project directory:**
+2. Navigate to the project directory:
 
    ```bash
-   cd motoons
+   cd MoToons
    ```
 
-3. **Open `index.html` in your browser:**
-
-   You can simply open the `index.html` file in your preferred web browser to view the project.
+3. Open the `index.html` file in your preferred web browser to see the 3D image slider in action.
 
 ## Usage
 
-- **Home Section:** The main landing page with a rotating carousel and a large banner with the title "MoToons."
-- **Navigation Bar:** A navigation menu to quickly jump between different sections like Home, Fairy Tales, Your Story, About Us, and Contact.
-- **Footer:** A simple footer that includes copyright information.
+The code provided is specifically for creating a 3D image slider within a banner section. You can use this in your own projects by copying the HTML and CSS files into your project structure.
+
+- The main HTML structure is in the `index.html` file.
+- The CSS for the 3D slider effect is in the `style.css` file.
+
+## How It Works
+
+### 1. **HTML Structure**
+
+The HTML structure consists of a `banner` div, which contains a `slider` div. The slider holds individual `item` divs, each containing an image. The `content` div contains the title and other elements that are overlaid on the banner.
+
+```html
+<div class="banner">
+    <div class="slider" style="--quantity: 10">
+        <!-- Individual items containing images -->
+        <div class="item" style="--position: 1"><img src="images/fairy1.jpg" alt=""></div>
+        <!-- More items here -->
+    </div>
+    <div class="content">
+        <h1 data-content="MoToons">MoToons</h1>
+        <div class="model"></div>
+    </div>
+</div>
+```
+
+### 2. **CSS 3D Effect**
+
+The 3D effect is achieved by utilizing the following CSS properties:
+
+- **`transform-style: preserve-3d;`**: This allows child elements to be transformed in 3D space.
+- **`perspective`**: This gives the illusion of depth.
+- **`rotateY`**: This rotates the images around the Y-axis to create a circular pattern.
+
+```css
+.banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 40s linear infinite;
+}
+```
+
+Each image is positioned on the carousel using a combination of `rotateY` and `translateZ`.
+
+```css
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+               translateZ(550px);
+}
+```
+
+### 3. **Animation**
+
+The images rotate continuously around the Y-axis using the `@keyframes` animation:
+
+```css
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-10deg) rotateY(0deg);
+    }
+    to {
+        transform: perspective(1000px) rotateX(-10deg) rotateY(360deg);
+    }
+}
+```
 
 ## Customization
 
-To customize the website:
+You can customize the following aspects of the slider:
 
-- **Images:** Replace the images in the `images/` directory with your own to change the content in the carousel and the banner model image.
-- **Colors:** Modify the colors in the `style.css` file to match your branding.
-- **Fonts:** If you prefer different fonts, you can change the `@import` links in the CSS file or include new font files.
+- **Number of Images**: Adjust the `--quantity` custom property in the `slider` div to match the number of images.
+- **Speed of Rotation**: Modify the `animation` duration in the `slider` div to control the rotation speed.
+- **Size and Position**: Adjust the `width`, `height`, `translateZ`, and `rotateY` values to change the size and position of the carousel.
 
-### File Structure:
-
-```plaintext
-motoons/
-│
-├── images/
-│   ├── fairy (1).jpg
-│   ├── fairy (2).jpg
-│   ├── fairy (3).jpg
-│   ├── fairy (4).jpg
-│   ├── fairy (5).jpg
-│   ├── fairy (6).jpg
-│   ├── fairy (7).jpg
-│   ├── fairy (8).jpg
-│   ├── fairy (9).jpg
-│   └── fairy (10).jpg
-│   └── model1.webp
-│
-├── index.html
-├── style.css
-└── README.md
-```
-
-## Technologies
-
-- **HTML5**: For structuring the content.
-- **CSS3**: For styling and layout, including animations and responsive design.
-- **Web Fonts**: The website uses custom fonts imported via CDN.
