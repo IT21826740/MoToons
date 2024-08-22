@@ -7,9 +7,6 @@ This project demonstrates how to create a 3D image slider effect using CSS. The 
 ## Demo
 
 
-https://github.com/user-attachments/assets/87bc3bf6-fbb9-41f1-af77-0e598f3d4249
-
-
 
 https://github.com/user-attachments/assets/235f23a1-163b-494f-885c-4709b6558a75
 
