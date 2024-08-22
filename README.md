@@ -11,6 +11,10 @@ https://github.com/user-attachments/assets/87bc3bf6-fbb9-41f1-af77-0e598f3d4249
 
 
 
+https://github.com/user-attachments/assets/235f23a1-163b-494f-885c-4709b6558a75
+
+
+
 ## Overview
 
 This project is designed to create a visually appealing 3D image slider effect using only HTML and CSS. The slider rotates a set of images in a 3D circular pattern, giving the impression of depth and perspective. This effect is perfect for enhancing the user experience on websites, especially in banner sections.
