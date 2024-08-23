@@ -17,6 +17,12 @@
       }
     ],
     "no-inline-styles": "off",
-    "button-type": "off"
+    "button-type": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "link-name": "off"
+      }
+    ]
   }
 }
